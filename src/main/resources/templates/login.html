@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<style type="text/css">
+.one {
+	width: 400px;
+	height: 330px;
+	margin: 0 auto;
+	margin-top: 120px;
+	background: rgba(240, 240, 240, 1);
+}
+
+.two {
+	float: left;
+	width: 370px;
+	height: 230px;
+	margin-top: 50px;
+	margin-left: 30px;
+}
+
+.two-1 {
+	width: 340px;
+	height: 40px;
+}
+
+.two-1 input {
+	font-size: 20px;
+	float: right;
+	width: 295px;
+	height: 35px;
+	background: #E8F0FE;
+}
+
+.two-2 {
+	width: 340px;
+	height: 50px;
+	margin-top: 40px;
+}
+
+.two-2 input {
+	font-size: 20px;
+	float: right;
+	width: 295px;
+	height: 35px;
+	background: #E8F0FE;
+}
+
+.three {
+	background: #428BCA;
+	float: left;
+	width: 337px;
+	height: 35px;
+	margin-top: 20px;
+	margin-left: 2px;
+}
+
+.three button {
+	float: left;
+	font-size: 19px;
+	width: 320px;
+	height: 30px;
+	margin-top: 5px;
+	margin-left: 5px;
+	background-color: #428BCA;
+	border: none;
+	color: white;
+}
+
+.four {
+	display: block;
+	float: left;
+	width: 100px;
+	height: 20px;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.four a {
+	text-decoration: none;
+}
+
+.two-1 img {
+	width: 41px;
+	height: 41px;
+}
+
+.two-2 img {
+	width: 41px;
+	height: 41px;
+}
+</style>
+</head>
+<body>
+<div class="one">
+<div><span th:text="${tips}"></span></div>
+        <div class="two">
+        	<form action="dologin"  onsubmit="init()">
+        	<div class="two-1"><img src="loginimg/444.png"><input type="text" id="names" name="name" placeholder="请输入账号！"></div>
+
+        	<div class="two-2"><img src="loginimg/333.png"><input type="password" id="passwords" name="password" placeholder="请输入密码！"></div>	
+          <div class="three">  <button type="submit">登录</button>  </div>
+        	</form>
+        </div>
+        <div class="four"><a href="" name="register ">注册一个账户</a></div>                        
+    </div>
+        	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+         <script type="text/javascript">
+    	function init(){
+    	var name=document.getElementById("names").value;
+    	var password=document.getElementById("passwords").value;
+    	if (name=="") {
+    		alert("请输入账号.....");
+    		return false;
+
+    	}else if(password==""){
+
+			alert("请输入密码.....");
+			return false;
+
+    	}	
+
+    	return true;
+    	}
+
+    </script>
+</body>
+</html>

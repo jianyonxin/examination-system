@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1">
+	<tr>
+	<th>id</th>
+	<th>科目</th>
+	<th>总分</th>
+	<th>查看详细信息</th>
+	<th>点击进入考试</th>
+	</tr>
+	<tr th:each="papaers:${paper}">
+	<td th:text="${papaers.pid}"></td>
+	<td th:text="${papaers.pname}"></td>
+	<td th:text="${papaers.score}"></td>
+	<td th:text="${papaers.information}"></td>
+	<th ><a th:href="@{goquestions(pid=${papaers.pid})}">开始考试</a></th>
+	</tr>	
+</table>
+</body>
+</html>

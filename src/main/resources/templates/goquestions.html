@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="styless/answer.css">
+<style type="text/css">
+a {
+	text-decoration: none
+}
+
+.bsy {
+	float: left;
+	margin-left: 260px;
+}
+
+.aa {
+	background: Red;
+}
+</style>
+
+
+</head>
+<body>
+
+	<div class="paper-title">
+		<span>试卷题目</span>
+	</div>
+
+	<div class="answer-area">
+		<!-- 题目区域 -->
+		<div id="fpage" class="topic-area" th:each="questionss:${questions}">
+			<div class="topic-title">
+				第<span id="data-page" th:text="${pageNums}"></span>题：<span
+					th:text="${questionss.title}"></span> <input type="hidden"
+					id="ssss" name="ssee" th:value="${questionss.p_id}" /> <input
+					type="hidden" id="sssx" name="ssees" th:value="${totalPage}" /> <input
+					type="hidden" id="sssy" name="ssees" th:value="${questionss.qid}" />
+			</div>
+			<div class="answer">
+				<ul th:each="answers:${questionss.anwser}">
+					<label><input type="radio" th:value="${answers.aid}"
+						name="cont" /> <span th:text="${answers.content}"></span></label>
+				</ul>
+			</div>
+			<div class="topic-switch">
+
+				<a class="previous disable" th:if="${pageNums eq 1}"
+					th:href="'/goquestions?pageNum='+${pageNums}+'&pid='+${questionss.p_id}">上一题</a>
+				<a class="previous " th:if="${pageNums gt 1}"
+					th:href="'/goquestions?pageNum='+${pageNums-1}+'&pid='+${questionss.p_id}">上一题</a>
+				<a class="next disable" th:if="${pageNums ge totalPage}"
+					th:href="'/goquestions?pageNum='+${pageNums}+'&pid='+${questionss.p_id}">
+					下一题</a> <a class="next" th:if="${pageNums lt totalPage}"
+					th:href="'/goquestions?pageNum='+${pageNums+1}+'&pid='+${questionss.p_id}">下一题</a>
+				<div class="bsy">
+					<a onclick="del(id)" href="#">交卷</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 答题卡区域 -->
+		<div id="imageMenu" class="answer-sheet-area"
+			th:each="questionss:${questions}">
+			<span>答题卡</span>
+			<ul>
+				<li th:each="i,status:${#numbers.sequence(1,totalPage)}"><a
+					th:text="${i}" th:data-index="${status.index}"
+					th:href="'/goquestions?pageNum='+${i}+'&pid='+${questionss.p_id}"></a>
+				</li>
+			</ul>
+		</div>
+		<!-- 清除浮动 -->
+		<div class="clean"></div>
+	</div>
+
+
+	<!-- 引入JS -->
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$.get('getSessionAnswers', function(json) {
+
+				var pageNums = parseInt($("#data-page").html());
+				//console.log(pageNums);
+				$.each(json, function(i, n) {
+					var li = $('div.answer-sheet-area>ul>li>a[data-index=' + i
+							+ ']');
+					if (n != 0) {
+						li.attr('answer', n);
+						li.addClass('aa');
+
+					}
+				});
+				var li = $('div.answer-sheet-area>ul>li>a[data-index='
+						+ (pageNums - 1) + ']');
+				//console.log(li.text());
+				if (li.attr('answer') != 0) {
+					$(
+							'div.answer>ul>label>input[value='
+									+ li.attr('answer') + ']').prop('checked',
+							true);
+				}
+				// 判断当前题目的答案
+			}, 'json');
+		});
+
+		$(":radio").click(function() {
+			var pageNums = $("#data-page").html();
+			var istrue = $(this).val();
+			//			   console.log(istrue);
+			$.ajax({
+				url : "istrue",
+				type : "GET",
+				data : {
+					pageNums : pageNums,
+					istrue : istrue
+				},
+			});
+		});
+
+		//提示是否确定交卷
+
+		function del(id) {
+			if (confirm("您确定要交卷吗")) {
+				var pid = parseInt($("#ssss").val());
+
+				window.location.href = '/fraction?pid=' + pid;
+			} else {
+				return false;
+			}
+		}
+		/* $(".stu").click(function(){
+			$.ajax({
+				     url: "istrue",
+				     type: "GET",
+				     data: {
+				    	 boxlds: boxlds,
+				     },
+				     traditional: true,
+				     success: function(data) {
+				     }
+				   }); 
+				   }); */
+	</script>
+</body>
+</html>

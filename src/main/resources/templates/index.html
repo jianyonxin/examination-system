@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<style type="text/css">
+	.papers{
+	height: 200px;
+	width:300px;
+	margin: auto; 
+		
+	}
+	 
+</style>
+<link rel="stylesheet" type="text/css" media="screen" href="styless/index.css">
+<link href="favicon.ico" rel="shortcut icon">
+</head>
+<body>
+<div class="ones">
+		<h2>考试评测系统</h2>
+		<div id="ones-1">
+		用户名:<span th:text="${session.studentz.name}"></span>
+		<br>
+		学号:<span th:text="${session.studentz.studentid}"></span>
+		</div>
+</div>
+	<div class="twos">
+		<div class="twos-1">
+
+		<li><a class="querycommodity" href="#" >选择试卷</a></li>
+		<li><a class="schoolreport" href="#">查看成绩</a></li>
+		</div>
+	</div>
+	<div class="controller">
+		<div class="papers"></div>
+	</div>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		/* 点击查看试卷获得所有试卷*/
+		  $(".querycommodity").click(function(event){
+				event.preventDefault();
+				
+				$.get("gopaper",{
+					
+				},function(data){
+					$(".papers").html(data);
+				});
+			});
+			/* 点击查看分数获得当前用户分数*/
+		  $(".schoolreport").click(function(event){
+				event.preventDefault();
+				
+				$.get("schoolreport",{
+					
+				},function(data){
+					$(".papers").html(data);
+				});
+			});
+			</script>
+</body>
+</html>

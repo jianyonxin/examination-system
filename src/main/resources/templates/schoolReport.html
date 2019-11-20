@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<style type="text/css">
+table{  
+border-collapse:collapse;  
+border-spacing:0;  
+}
+
+th,td{  
+padding:0;  
+}
+input{
+	text-align:center;
+    background: lightcoral;
+	width: 100px;
+    height: 25px;
+    border: 0px;
+}
+</style>
+</head>
+<body>
+<table border="1">
+<tr>
+<th>学号</th>
+<th>姓名</th>
+<th>考试科目</th>
+<th>总题数</th>
+<th>成绩(分)</th>
+</tr>
+<tr>
+<td> <input th:value="${session.studentz.studentid}" readonly="readonly" /></td>
+<td> <input th:value="${session.studentz.name}" readonly="readonly" /></td>
+<td> <input th:value="${paper.pname}" readonly="readonly" /></td>
+<td> <input th:value="${totalPages}" readonly="readonly" /></td>
+<td> <input th:value="${session.score}" readonly="readonly" /></td>
+</tr>
+</table>
+</body>
+</html>

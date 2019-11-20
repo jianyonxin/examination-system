@@ -1,0 +1,192 @@
+*{
+
+	margin: 0;
+}
+#choiceWindow {
+	display:none;
+	position:absolute;
+	top:10%;
+	left:25%;
+	width:45%;
+	height:65%;
+	padding:20px;
+	border:3px solid #ccc;
+	background-color:white;
+	z-index:2;
+	overflow:auto;
+}
+#backGround {
+	display:none;
+	position:absolute;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:1100px;
+	background-color:black;
+	z-index:1;
+	-moz-opacity:0.8;
+	opacity:.80;
+	filter:alpha(opacity=88);
+}
+#x:hover {
+	cursor:pointer;
+	color:rgb(55,198,192);
+}
+.one{
+    
+	width:400px;
+	height:330px;
+	
+	margin:0 auto;
+	margin-top: 50px;
+	background: rgba(240,240,240,1);
+}	
+.two{
+	   float: left;
+	 width: 370px;
+	 height: 230px;
+
+  margin-top: 50px;
+  margin-left:30px;
+
+}
+.two-1{
+ width: 340px;
+ height: 40px;
+
+
+}
+.two-1 input{
+
+font-size: 20px;
+float:right;
+width: 295px;
+height: 35px;
+background: #E8F0FE;
+
+
+
+}   
+.two-2{
+ width: 340px;
+ height: 50px;
+
+margin-top: 40px;
+
+}
+
+.two-2 input{
+font-size: 20px;
+float:right;
+width: 295px;
+height: 35px;
+background: #E8F0FE;
+
+
+
+} .three{
+background: #428BCA;
+float: left;
+width: 337px;
+height: 35px;
+margin-top: 20px;
+margin-left: 2px;
+
+}
+.three button{
+float: left;
+font-size: 19px;
+width: 320px;
+height: 30px;
+margin-top: 5px;
+margin-left: 5px;
+background-color:#428BCA;
+border: none;
+color: white;
+}
+.four{
+display: block;
+float: left;
+width: 100px;
+height: 20px;
+margin-top: 20px;
+margin-left: 30px;
+
+
+}
+.four a{
+  text-decoration: none;
+}
+.two-1 img{
+width: 41px;
+height: 41px;
+
+}
+.two-2 img{
+width: 41px;
+height: 41px;
+
+}
+.ones{
+	width: 100%;
+	height: 40px;
+	background: rgb(165, 161, 160);
+	border-top: 3px solid rgb(124, 102, 60);
+	box-shadow: 0px 1px #000;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+}
+.ones h2{
+
+	margin: 0 auto;
+	text-align:center;
+
+}
+#ones-1{
+
+	width: 200px;
+	height: 40px;
+	margin-top: -32px;
+	margin-left: 1000px;
+	float: left;
+	
+}
+#ones-1 a{
+
+	float: left;
+	position: relative;
+	margin-left: 40px;
+	margin-top: 8px;
+}
+.twos{
+
+   width: 100px;
+   height: 650px;
+   border: 1px solid rgb(17, 16, 16);
+   margin-top: 44px;
+   background:rgb(165, 161, 160);
+}
+.twos li{
+	list-style: none;
+	height: 80px;
+	 }
+	  a{
+		  color: rgb(23, 37, 37);
+		text-decoration: none;
+	 }
+	 .controller{
+		width:1260px;
+		height:650px;
+		margin-top:-652px;
+		background:rgb(236, 179, 165);
+		border: 1px solid rgb(17, 16, 16);
+		float: right
+	 }
+	 .twos-1{
+		margin-top: 30px;
+		width: 100px;
+		height: 400px;
+		margin-left:0px;
+	 }
+

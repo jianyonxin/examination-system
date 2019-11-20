@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shixun.online.project.mapper.QuestionsMapper">
+<resultMap type="Questions" id="BaseResultMap">
+<id column="qid" property="qid"/>
+<result column="title" property="title"/>
+<result column="p_id" property="p_id"/>
+     <collection property="anwser" ofType="shixun.online.project.pojo.Anwser">
+		<id column="aid" property="aid"/>
+		<result column="content" property="content"/>
+		<result column="istrue" property="istrue" />
+		<result column="questions_id" property="questions_id" />
+		<association property="questions" resultMap="BaseResultMap"/>
+     </collection>
+</resultMap>
+<select id="getQuestions" resultMap="BaseResultMap" parameterType="int">
+	SELECT 
+	qid,title,p_id,aid,content,istrue,questions_id
+	FROM
+	questions q,anwser a
+	WHERE
+	q.qid=a.questions_id
+	AND
+	q.p_id=#{pid}
+	limit #{start},#{count}
+</select>
+<select id="getssArrQuestions" resultType="int">
+	SELECT
+	count(*)
+	FROM
+	questions
+</select>
+</mapper>
